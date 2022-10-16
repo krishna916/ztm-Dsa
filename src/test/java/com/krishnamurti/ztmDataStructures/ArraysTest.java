@@ -1,10 +1,13 @@
 package com.krishnamurti.ztmDataStructures;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import com.krishnamurti.ztmDataStructures.Arrays.ArrayExercise;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import com.krishnamurti.ztmDataStructures.Arrays.SimpleArray;
+
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ArraysTest {
 
@@ -45,6 +48,24 @@ public class ArraysTest {
         System.out.println(array);
         assertEquals(3, array.size());
         assertEquals(67, array.get(1));
+    }
+
+    // Exercises
+
+    @Test
+    public void testReverse() {
+        String t = "hello";
+        assertEquals(StringUtils.reverse(t), ArrayExercise.reverse(t));
+        assertThrows(IllegalArgumentException.class, () -> ArrayExercise.reverse(null));
+    }
+
+    @Test
+    public void testMergeSortedArray() {
+        int[] arr1 = {0, 3, 4, 555};
+        int[] arr2 = {4, 6, 30};
+        int[] result = ArrayExercise.mergeSortedArrays(arr1, arr2);
+        int[] expectedResult = {0, 3, 4, 4, 6, 30, 555};
+        assertArrayEquals(expectedResult, result);
     }
 
 
