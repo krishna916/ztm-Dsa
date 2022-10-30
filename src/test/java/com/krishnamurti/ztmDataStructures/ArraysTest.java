@@ -5,8 +5,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import com.krishnamurti.ztmDataStructures.Arrays.SimpleArray;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArraysTest {
