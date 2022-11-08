@@ -1,5 +1,7 @@
 package com.krishnamurti.ztmDataStructures.LinkedList;
 
+import com.krishnamurti.commons.DoublyNode;
+
 public class SimpleDoublyLinkedList<V> {
 
     private DoublyNode<V> head;

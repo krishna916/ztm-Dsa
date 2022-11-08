@@ -1,5 +1,7 @@
 package com.krishnamurti.ztmDataStructures.LinkedList;
 
+import com.krishnamurti.commons.Node;
+
 public class SimpleLinkedList<V> {
 
     private Node<V> head;

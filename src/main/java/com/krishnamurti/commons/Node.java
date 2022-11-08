@@ -1,4 +1,4 @@
-package com.krishnamurti.ztmDataStructures.LinkedList;
+package com.krishnamurti.commons;
 
 public class Node<V> {
 
