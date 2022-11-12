@@ -64,14 +64,100 @@ public class SimpleBinarySearchTree<V extends Comparable<V>> {
     public V search(V value) {
         BinaryNode<V> current = this.root;
         while (current != null) {
-            if (current.getValue().equals(value)) {
+            if (value.compareTo(current.getValue()) == 0) {
                 return current.getValue();
-            }
-            if (value.compareTo(current.getValue()) < 0) {
+            } else if (value.compareTo(current.getValue()) < 0) {
                 current = current.getLeft();
             } else if (value.compareTo(current.getValue()) > 0) {
                 current = current.getRight();
             }
+        }
+        return null;
+    }
+
+    public V remove(V value) {
+        if (value == null) {
+            throw new IllegalArgumentException();
+        }
+        if (this.root == null) {
+            return null;
+        }
+        BinaryNode<V> current = this.root;
+        BinaryNode<V> parentNode = null;
+        while (current != null) {
+            int comparisonResult = value.compareTo(current.getValue());
+            if (comparisonResult < 0) {
+                parentNode = current;
+                current = current.getLeft();
+            } else if (comparisonResult > 0) {
+                parentNode = current;
+                current = current.getRight();
+            } else { // Match!!
+
+                // Option 1: No right child
+                if (current.getRight() == null) {
+                    if (parentNode == null) {
+                        this.root = current.getLeft();
+                        return current.getValue();
+                    } else {
+
+                        // if parent > current value, make left
+                        // child a left child of parent
+                        if (current.getValue().compareTo(parentNode.getValue()) < 0) {
+                            parentNode.setLeft(current.getLeft());
+                            return current.getValue();
+                        } // if parent < current value, make left child a right child of parent
+                        else if (current.getValue().compareTo(parentNode.getValue()) > 0) {
+                            parentNode.setRight(current.getLeft());
+                            return current.getValue();
+                        }
+                    }
+                } else if (current.getRight().getLeft() == null) {
+                    // Option 2: Right child which does not have left child
+                    if (parentNode == null) {
+                        this.root = current.getLeft();
+                        return current.getValue();
+                    } else {
+                        current.getRight().setLeft(current.getLeft());
+
+                        if (current.getValue().compareTo(parentNode.getValue()) < 0) {
+                            parentNode.setLeft(current.getRight());
+                            return current.getValue();
+                        } else if (current.getValue().compareTo(parentNode.getValue()) > 0) {
+                            parentNode.setRight(current.getRight());
+                            return current.getValue();
+                        }
+                    }
+                } else {
+                    // Option 3: Right child has left child
+                    BinaryNode<V> leftMost = current.getRight().getLeft();
+                    BinaryNode<V> leftMostParent = current.getRight();
+                    while (leftMost.getLeft() != null) {
+                        leftMostParent = leftMost;
+                        leftMost = leftMost.getLeft();
+                    }
+
+                    // Parent's left subtree is now leftmost's right subtree
+                    leftMostParent.setLeft(leftMost.getRight());
+                    leftMost.setLeft(current.getLeft());
+                    leftMost.setRight(current.getRight());
+
+                    if (parentNode == null) {
+                        this.root = leftMost;
+                        return current.getValue();
+                    } else {
+                        if (current.getValue().compareTo(parentNode.getValue()) < 0) {
+                            parentNode.setLeft(leftMost);
+                            return current.getValue();
+                        } else if (current.getValue().compareTo(parentNode.getValue()) > 0) {
+                            parentNode.setRight(leftMost);
+                            return current.getValue();
+                        }
+                    }
+                }
+
+            }
+
         }
         return null;
     }

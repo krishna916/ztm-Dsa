@@ -13,13 +13,16 @@ public class TreeTest {
         bst.insert(54);
         bst.insert(45);
         bst.insert(34);
-        bst.insert(546);
+        bst.insert(99);
         bst.insert(1);
         bst.insert(50);
         bst.insert(38);
+        bst.insert(52);
 
         bst.printTree();
 
-        System.out.println(bst.search(546));
+        System.out.println(bst.search(1));
+        System.out.println(bst.remove(38));
+        bst.printTree();
     }
 }
