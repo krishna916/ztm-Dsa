@@ -1,6 +1,7 @@
 package com.krishnamurti.ztmAlgorithm;
 
 import com.krishnamurti.ztmAlgorithm.Sorting.BubbleSort;
+import com.krishnamurti.ztmAlgorithm.Sorting.InsertionSort;
 import com.krishnamurti.ztmAlgorithm.Sorting.SelectionSort;
 import org.junit.jupiter.api.Test;
 
@@ -14,14 +15,21 @@ public class SortingTest {
     @Test
     public void bubbleSortTest() {
         List<Integer> list = generateRandomArray(10000, 10000);
-        BubbleSort.bubbleSort(list);
+        BubbleSort.sort(list);
         System.out.println(Arrays.toString(list.toArray()));
     }
 
     @Test
-    public void selectionSort() {
+    public void selectionSortTest() {
         List<Integer> list = generateRandomArray(10000, 10000);
-        SelectionSort.selectionSort(list);
+        SelectionSort.sort(list);
+        System.out.println(Arrays.toString(list.toArray()));
+    }
+
+    @Test
+    public void insertionSortTest() {
+        List<Integer> list = generateRandomArray(10000, 10000);
+        InsertionSort.sort(list);
         System.out.println(Arrays.toString(list.toArray()));
     }
 

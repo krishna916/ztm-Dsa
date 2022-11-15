@@ -4,7 +4,7 @@ import java.util.List;
 
 public class SelectionSort {
 
-    public static void selectionSort(List<Integer> arr) {
+    public static void sort(List<Integer> arr) {
         int length = arr.size();
         for (int i = 0; i < length; i++) {
             int min = i;

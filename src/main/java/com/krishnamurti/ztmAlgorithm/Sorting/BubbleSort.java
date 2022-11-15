@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BubbleSort {
 
-    public static void bubbleSort(List<Integer> arr) {
+    public static void sort(List<Integer> arr) {
         int length = arr.size();
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length - 1; j++) {
