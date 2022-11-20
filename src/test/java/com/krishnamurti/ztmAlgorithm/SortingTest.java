@@ -2,6 +2,7 @@ package com.krishnamurti.ztmAlgorithm;
 
 import com.krishnamurti.ztmAlgorithm.Sorting.BubbleSort;
 import com.krishnamurti.ztmAlgorithm.Sorting.InsertionSort;
+import com.krishnamurti.ztmAlgorithm.Sorting.MergeSort;
 import com.krishnamurti.ztmAlgorithm.Sorting.SelectionSort;
 import org.junit.jupiter.api.Test;
 
@@ -29,8 +30,18 @@ public class SortingTest {
     @Test
     public void insertionSortTest() {
         List<Integer> list = generateRandomArray(10000, 10000);
+
         InsertionSort.sort(list);
         System.out.println(Arrays.toString(list.toArray()));
+    }
+
+    @Test
+    public void mergeSortTest() {
+        List<Integer> list = generateRandomArray(8, 10);
+        System.out.println(Arrays.toString(list.toArray()));
+        ;
+        List<Integer> sorted = MergeSort.mergeSort(list);
+        System.out.println(Arrays.toString(sorted.toArray()));
     }
 
     public List<Integer> generateRandomArray(int n, int bound) {
