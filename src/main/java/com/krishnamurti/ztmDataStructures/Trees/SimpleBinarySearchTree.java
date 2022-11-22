@@ -209,5 +209,50 @@ public class SimpleBinarySearchTree<V extends Comparable<V>> {
         return breadFirstSearchR(queue, list);
     }
 
+    public List<V> dfsInOrder() {
+        return traverseInOrder(this.root, new ArrayList<>());
+    }
+
+    public List<V> dfsPreOrder() {
+        return traversePreOrder(this.root, new ArrayList<>());
+    }
+
+    public List<V> dfsPostOrder() {
+        return traversePostOrder(this.root, new ArrayList<>());
+    }
+
+    private List<V> traverseInOrder(BinaryNode<V> node, List<V> list) {
+        if (node.getLeft() != null) {
+            traverseInOrder(node.getLeft(), list);
+        }
+        list.add(node.getValue());
+        if (node.getRight() != null) {
+            traverseInOrder(node.getRight(), list);
+        }
+        return list;
+    }
+
+    private List<V> traversePreOrder(BinaryNode<V> node, List<V> list) {
+        list.add(node.getValue());
+        if (node.getLeft() != null) {
+            traversePreOrder(node.getLeft(), list);
+        }
+        if (node.getRight() != null) {
+            traversePreOrder(node.getRight(), list);
+        }
+        return list;
+    }
+
+    private List<V> traversePostOrder(BinaryNode<V> node, List<V> list) {
+        if (node.getLeft() != null) {
+            traversePostOrder(node.getLeft(), list);
+        }
+        if (node.getRight() != null) {
+            traversePostOrder(node.getRight(), list);
+        }
+        list.add(node.getValue());
+        return list;
+    }
+
 
 }
