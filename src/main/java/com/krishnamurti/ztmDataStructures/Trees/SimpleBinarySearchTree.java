@@ -1,5 +1,10 @@
 package com.krishnamurti.ztmDataStructures.Trees;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
 public class SimpleBinarySearchTree<V extends Comparable<V>> {
 
     private BinaryNode<V> root;
@@ -161,5 +166,48 @@ public class SimpleBinarySearchTree<V extends Comparable<V>> {
         }
         return null;
     }
+
+    public List<V> breadthFirstSearch() {
+        BinaryNode<V> currentNode = this.root;
+
+        List<V> list = new ArrayList<>();
+        Queue<BinaryNode<V>> queue = new ArrayDeque<>();
+        queue.add(currentNode);
+
+        while (!queue.isEmpty()) {
+            currentNode = queue.poll();
+            System.out.println(currentNode.getValue());
+            list.add(currentNode.getValue());
+            if (currentNode.getLeft() != null) {
+                queue.add(currentNode.getLeft());
+            }
+            if (currentNode.getRight() != null) {
+                queue.add(currentNode.getRight());
+            }
+        }
+        return list;
+    }
+
+    public List<V> breadFirstSearchR() {
+        Queue<BinaryNode<V>> queue = new ArrayDeque<>();
+        queue.add(this.root);
+        return breadFirstSearchR(queue, new ArrayList<>());
+    }
+
+    private List<V> breadFirstSearchR(Queue<BinaryNode<V>> queue, List<V> list) {
+        if (queue.isEmpty()) {
+            return list;
+        }
+        BinaryNode<V> currentNode = queue.poll();
+        list.add(currentNode.getValue());
+        if (currentNode.getLeft() != null) {
+            queue.add(currentNode.getLeft());
+        }
+        if (currentNode.getRight() != null) {
+            queue.add(currentNode.getRight());
+        }
+        return breadFirstSearchR(queue, list);
+    }
+
 
 }

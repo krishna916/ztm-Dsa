@@ -3,6 +3,8 @@ package com.krishnamurti.ztmDataStructures;
 import com.krishnamurti.ztmDataStructures.Trees.SimpleBinarySearchTree;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 public class TreeTest {
 
     @Test
@@ -24,5 +26,10 @@ public class TreeTest {
         System.out.println(bst.search(1));
         System.out.println(bst.remove(38));
         bst.printTree();
+
+        System.out.println();
+        bst.breadthFirstSearch();
+        System.out.println(Arrays.toString(bst.breadFirstSearchR().toArray(new Integer[0])));
+
     }
 }
