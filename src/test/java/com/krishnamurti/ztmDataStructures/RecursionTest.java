@@ -24,4 +24,9 @@ public class RecursionTest {
     public void IterativeFibonacci() {
         System.out.println(RecursionExercise.iterativeFibonacci(50));
     }
+
+    @Test
+    public void dpFibonacci() {
+        System.out.println(RecursionExercise.dpFibonacci(50));
+    }
 }
